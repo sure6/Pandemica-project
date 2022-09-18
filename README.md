@@ -1,4 +1,4 @@
-# Pandemica-project (CSCI927-project, )
+# Pandemica-project (CSCI927-project)
 <hr>
 
 ## Microservice Implement
