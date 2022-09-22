@@ -22,13 +22,6 @@
 							<h1 class="fs-4 card-title fw-bold mb-4">Login</h1>
 							<form class="needs-validation" novalidate="" autocomplete="off" id="loginForm" onsubmit="return func()">
 								<!--                    <input type="hidden" name="userID" id="userID">-->
-<!--								<div class="mb-3">-->
-<!--									<label class="mb-2 text-muted" for="email">E-Mail Address</label>-->
-<!--									<input id="email" type="email" class="form-control" name="email" value="" required autofocus>-->
-<!--									<div class="invalid-feedback">-->
-<!--										Email is invalid-->
-<!--									</div>-->
-<!--								</div>-->
 								<div class="mb-3">
 									<label class="mb-2 text-muted" for="username">Username</label>
 									<input id="username" type="text" class="form-control" name="username" value="" required autofocus placeholder="Please Input your username">
@@ -90,31 +83,6 @@
 			// generate UUID
 			// $('#userID').val(crypto.randomUUID());
 
-			// $("#loginForm").bootstrapValidator({
-			// 	message: "this is invaild input",
-			// 	feedbackIcons: {
-			// 		valid: 'glyphicon glyphicon-ok',
-			// 		invalid: 'glyphicon glyphicon-remove',
-			// 		validating: 'glyphicon glyphicon-refresh'
-			// 	},
-			// 	fields: {
-			// 		username: { // name="username"
-			// 			validators: {
-			// 				notEmpty: {
-			// 					message: "The account cannot be empty！"
-			// 				},
-			// 			}
-			// 		},
-			// 		password: { // name="password" The password cannot be the same as the account
-			// 			validators: {
-			// 				notEmpty: {
-			// 					message: "The password cannot be empty！"
-			// 				},
-			// 			}
-			// 		},
-			// 	}
-			// });
-
 		})()
 
 
@@ -123,12 +91,7 @@
 		}
 
 		// login account
-		function login(event) {
-			// $('#loginForm').data('bootstrapValidator').validate();
-			// if(!$('#loginForm').data('bootstrapValidator').isValid()){
-			// 	return ;
-			// }
-
+		function login(){
 			var formdata = $('#loginForm').serialize();
 			console.log(formdata);
 			$.ajax({
@@ -143,7 +106,6 @@
 					if(resultObj.stateValue == "true"){
 						window.location.href="/index";
 					}
-
 				},
 				error:function (){
 					alert("request failed!!")
