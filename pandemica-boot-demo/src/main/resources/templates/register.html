@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Muhamad Nauval Azhar">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="This is a login page template based on Bootstrap 5">
+    <title>Bootstrap 5 Login Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/css/bootstrapValidator.min.css"
+          integrity="sha512-YDChav1pUAodyH1Ja7PIpEDUOoFROpZi5Lb7pY8+9+kU8UTr3J8SI8QO7SRuf4qdDKb5OI0xSt4Vk1wiYjBXgw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <!--    <style>-->
+    <!--        /* Controls the position of the ICONS after the feedbackIcons input box */-->
+    <!--        .form-control-feedback{-->
+    <!--            display: block;-->
+    <!--            width: 10px;-->
+    <!--            height: 10px;-->
+    <!--            /*left:500px;*/-->
+    <!--        }-->
+    <!--        small{-->
+    <!--            color: red;-->
+    <!--        }-->
+    <!--    </style>-->
+</head>
+
+<body>
+<section class="h-100">
+    <div class="container h-100">
+        <div class="row justify-content-sm-center h-100">
+            <div class="col-xxl-4 col-xl-5 col-lg-5 col-md-7 col-sm-9">
+                <div class="text-center my-5">
+                    <img src="https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-logo.svg" alt="logo" width="100">
+                </div>
+                <div class="card shadow-lg">
+                    <div class="card-body p-5">
+                        <h1 class="fs-4 card-title fw-bold mb-4">Register</h1>
+                        <form class="needs-validation" novalidate="" autocomplete="off" id="registrationForm"  onsubmit="return func()">
+                            <input type="hidden" name="userID" id="userID">
+                            <div class="mb-3">
+                                <label class="mb-2 text-muted" for="firstName">First Name</label>
+                                <input id="firstName" type="text" class="form-control" name="firstName" value=""
+                                       required autofocus placeholder="Please Input your First Name">
+                                <div class="invalid-feedback">
+                                    First Name is required
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="mb-2 text-muted" for="lastName">Last Name</label>
+                                <input id="lastName" type="text" class="form-control" name="lastName" value="" required
+                                       autofocus placeholder="Please Input your Last Name">
+                                <div class="invalid-feedback">
+                                    Last Name is required
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="mb-2 text-muted" for="age">Age</label>
+                                <input id="age" type="number" class="form-control" name="age" value="" required
+                                       autofocus placeholder="Please Input your Age">
+                                <div class="invalid-feedback">
+                                    Age is required
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <div class="col-1">
+                                    <label class="mb-2 text-muted">Gender</label>
+                                </div>
+                                <div class="col-6">
+                                    <input type="radio" name="gender" class="gender" value="male" checked><label
+                                        class="form-label">Male</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <input type="radio" name="gender" class="gender" value="female"><label
+                                        class="form-label">Female</label>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="mb-2 text-muted" for="username">Username</label>
+                                <input id="username" type="text" class="form-control" name="username" value="" required
+                                       placeholder="Please Input your username">
+                                <div class="invalid-feedback">
+                                    Username is invalid
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="mb-2 text-muted" for="password">Password</label>
+                                <input id="password" type="password" class="form-control" name="password" value=""
+                                       required placeholder="Please Input your password">
+                                <div class="invalid-feedback">
+                                    Password is invalid
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="mb-2 text-muted" for="repassword">Input Password Again</label>
+                                <input id="repassword" type="password" class="form-control" name="repassword" required
+                                       placeholder="Please Input your password again">
+                                <div class="invalid-feedback">
+                                    Input Password Again is required
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="mb-2 text-muted" for="phoneNumber">Phone Number</label>
+                                <input id="phoneNumber" type="text" class="form-control" name="phoneNumber" required
+                                       placeholder="Please Input your phone number">
+                                <div class="invalid-feedback">
+                                    Phone number is required
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="mb-2 text-muted" for="email">E-Mail Address</label>
+                                <input id="email" type="email" class="form-control" name="email" value="" required
+                                       placeholder="Please Input your Email">
+                                <div class="invalid-feedback">
+                                    Email is invalid
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="position" class="mb-2 text-muted">Position</label>
+                                <select id="position" class="form-select" name="position" required>
+                                    <option value="" selected> Choose</option>
+                                    <option value="Driver"> Driver</option>
+                                    <option value="Delivery People"> Delivery People</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Position is invalid
+                                </div>
+                            </div>
+
+
+                            <p class="form-text text-muted mb-3">
+                                By registering you agree with our terms and condition.
+                            </p>
+
+                            <div class="align-items-center d-flex">
+                                <button type="submit" class="btn btn-primary ms-auto" onclick="registration()">
+                                    Register
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-footer py-3 border-0">
+                        <div class="text-center">
+                            Already have an account? <a href="/userAccount/login" class="text-dark">Login</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-5 text-muted">
+                    Copyright &copy; 2021-2022 &mdash; Group 17
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="js/login.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+        integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"
+        integrity="sha512-Vp2UimVVK8kNOjXqqj/B0Fyo96SDPj9OCSm1vmYSrLYF3mwIOBXh/yRZDVKo8NemQn1GUjjK0vFJuCSCkYai/A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    (function () {
+        'use strict'
+
+        // generate UUID
+        $('#userID').val(crypto.randomUUID());
+
+        // $("#registrationForm").bootstrapValidator({
+        //     message: "this is invaild input",
+        //     feedbackIcons: {
+        //         valid: 'glyphicon glyphicon-ok',
+        //         invalid: 'glyphicon glyphicon-remove',
+        //         validating: 'glyphicon glyphicon-refresh'
+        //     },
+        //     fields: {
+        //         firstName: {
+        //             validators: {
+        //                 notEmpty: {
+        //                     message: "The first name cannot be empty"
+        //                 },
+        //             }
+        //         },
+        //         lastName: {
+        //             validators: {
+        //                 notEmpty: {
+        //                     message: "The last name cannot be empty"
+        //                 },
+        //             }
+        //         },
+        //         username: { // name="username"
+        //             validators: {
+        //                 notEmpty: {
+        //                     message: "The account cannot be empty！"
+        //                 },
+        //                 stringLength: {
+        //                     message: "Account length is between 6-10!",
+        //                     min: 6,
+        //                     max: 10
+        //                 },
+        //                 regexp: {
+        //                     message: "The account consists of lowercase letters and digits",
+        //                     regexp: /^[a-z0-9]{6,10}$/
+        //                 }
+        //             }
+        //         },
+        //         password: { // name="password" The password cannot be the same as the account
+        //             validators: {
+        //                 notEmpty: {
+        //                     message: "The password cannot be empty！"
+        //                 },
+        //                 stringLength: {
+        //                     message: "Password length is between 6 and 10!",
+        //                     min: 6,
+        //                     max: 10
+        //                 },
+        //                 regexp: {
+        //                     message: "Password consists of lowercase letters, numbers!",
+        //                     regexp: /^[a-z0-9]{6,10}$/
+        //                 },
+        //                 different: { // different：The password cannot be the same as the account
+        //                     message: "The account and password must be different",
+        //                     field: "username" // The field value to compare
+        //                 }
+        //             }
+        //         },
+        //         repassword: { // name="repassword" Confirm password must be the same as the password
+        //             validators: {
+        //                 notEmpty: {
+        //                     message: "Confirm that the password cannot be empty!"
+        //                 },
+        //                 stringLength: {
+        //                     message: "Make sure your password is 6-10 long!",
+        //                     min: 6,
+        //                     max: 10
+        //                 },
+        //                 regexp: {
+        //                     message: "Confirm password consists of lowercase letters and digits!",
+        //                     regexp: /^[a-z0-9]{6,10}$/
+        //                 },
+        //                 identical: { // identical：Confirm password must be the same as the password
+        //                     message: "Entered passwords differ！",
+        //                     field: "password" // The field value to compare
+        //                 }
+        //             }
+        //         },
+        //         email: { // name="email" The rule is encapsulated by default in the bootstrap
+        //             validators: {
+        //                 notEmpty: {
+        //                     message: "The mailbox cannot be empty!"
+        //                 },
+        //                 emailAddress: {
+        //                     message: "Email format is wrong!"
+        //                 }
+        //             }
+        //         }
+        //     }
+        // });
+
+    })()
+
+
+    // serializeArray --> JSON object
+    function getFormData($form) {
+        var unindexed_array = $form.serializeArray();
+        var indexed_array = {};
+        $.map(unindexed_array, function (n, i) {
+            indexed_array[n['name']] = n['value'];
+        });
+        return indexed_array;
+    }
+
+    // sub-object accessory
+    function furtherAccessory(jsonObj) {
+        var userAccount = {}
+        userAccount.userID = jsonObj.userID;
+        userAccount.username = jsonObj.username;
+        userAccount.password = jsonObj.password;
+        jsonObj.userAccount = userAccount;
+        delete jsonObj.username;
+        delete jsonObj.password;
+        delete jsonObj.repassword;
+        return jsonObj;
+    }
+
+    function func(){
+        return false;
+    }
+    // registration account
+    function registration() {
+
+
+        // $('#registrationForm').data('bootstrapValidator').validate();
+        // if(!$('#registrationForm').data('bootstrapValidator').isValid()){
+        //     return ;
+        // }
+
+        var formdata = furtherAccessory(getFormData($('#registrationForm')));
+        console.log(JSON.stringify(formdata));
+        $.ajax({
+            type: "POST",
+            dataType: "text",
+            contentType: "application/json ; charset=utf-8",
+            url: "/userRegistration",
+            data: JSON.stringify(formdata),
+            success: function (result) {
+                var resultObj = JSON.parse(result)
+                alert(resultObj.returnInfo);
+                if (resultObj.stateValue == "true") {
+                    window.location.href = "/registerSuccessfull";
+                }
+
+            },
+            error: function () {
+                alert("request failed!!")
+            }
+        });
+
+
+
+    }
+
+</script>
+</body>
+</html>
