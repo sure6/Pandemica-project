@@ -2,11 +2,19 @@ package com.csci927.pandemicabootdemo.controller;
 
 
 import com.csci927.pandemicabootdemo.bean.JSONResult;
+import com.csci927.pandemicabootdemo.bean.UserAccount;
 import com.csci927.pandemicabootdemo.service.UserAccountService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * <p>
@@ -34,16 +42,49 @@ public class UserAccountController {
     }
 
     @ResponseBody
+    @PutMapping("userForgot")
+    public JSONResult userForgot(@RequestParam String username, @RequestParam String password, @RequestParam String passwordConfirm){
+        UserAccount userInfoByAccount = userAccountService.getUserInfoByAccount(username);
+        if(null == userInfoByAccount){
+           return new JSONResult("false","Account does not exist!!!");
+        }
+        if(!password.equals(passwordConfirm)){
+            return new JSONResult("false","The two entered passwords are different！！！");
+        }
+//        System.out.println(username+password);
+        if(!userAccountService.modifyPassword(username,password)){
+            return new JSONResult("false","Password modified failed, please retry");
+        }
+        return new JSONResult("true","Password modified successfully");
+    }
+
+    @ResponseBody
     @PostMapping("userLogin")
-    public JSONResult useLogin(@RequestParam String username, @RequestParam String password) {
+    public JSONResult useLogin(@RequestParam String username, @RequestParam String password, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
         if (StringUtils.isEmpty(username) && StringUtils.isEmpty(password)) {
             return new JSONResult("false", "username and password is not NULL");
         }
-        System.out.println(username + password);
-        return userAccountService.selectUserAccount(username, password) ?
-                new JSONResult("true", "user and password is correct") :
-                new JSONResult("false", "user and password is incorrect");
+        return userAccountService.doLogin(username.trim(), password.trim(), session, request, response);
+
     }
+    /**
+     * logout
+     */
+    @RequestMapping("logout")
+    public String logout(HttpSession session, HttpServletRequest request, HttpServletResponse response) {
+        //  Delete the user information in the session
+        session.removeAttribute("user_session");
+        // Save the cookie for automatic login
+        Cookie cookie_username = new Cookie("cookie_username", "");
+        // Set the cookie persistence time to 0
+        cookie_username.setMaxAge(0);
+        // Set to the current project carries this cookie
+        cookie_username.setPath("/");
+        // Sending a cookie to the client
+        response.addCookie(cookie_username);
+        return "login";
+    }
+
 
 
 }

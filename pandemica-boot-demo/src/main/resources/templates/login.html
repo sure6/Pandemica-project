@@ -77,15 +77,8 @@
 			integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
 			crossorigin="anonymous"></script>
 	<script>
-		(function () {
-			'use strict'
-
-			// generate UUID
-			// $('#userID').val(crypto.randomUUID());
-
-		})()
-
-
+		// generate UUID
+		// $('#userID').val(crypto.randomUUID());
 		function func(){
 			return false;
 		}
@@ -103,7 +96,7 @@
 				success:function (result){
 					var resultObj = JSON.parse(result);
 					alert(resultObj.returnInfo);
-					if(resultObj.stateValue == "true"){
+					if(resultObj.stateValue === "true"){
 						window.location.href="/index";
 					}
 				},
@@ -112,7 +105,6 @@
 				}
 			});
 		}
-
 	</script>
 </body>
 </html>

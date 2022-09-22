@@ -22,34 +22,5 @@ public class HomePageController {
         return "/index.html";
     }
 
-    @ResponseBody
-    @RequestMapping(value = "/setSession")
-    public Map<String, Object> setSession (HttpServletRequest request){
-        Map<String, Object> map = new HashMap<>();
-        request.getSession().setAttribute("message", request.getRequestURL());
-        map.put("request Url", request.getRequestURL());
-        return map;
-    }
 
-    @ResponseBody
-    @RequestMapping(value = "/getSession")
-    public Object getSession (HttpServletRequest request){
-        Map<String, Object> map = new HashMap<>();
-        map.put("sessionId", request.getSession().getId());
-        map.put("message", request.getSession().getAttribute("message"));
-        return map;
-    }
-
-    @ResponseBody
-    @RequestMapping(value = "/login")
-    public String login (HttpServletRequest request,String userName,String password){
-        System.out.println(request.getSession().getId());
-        String msg="logon failure!";
-
-        if (userName!=null && "admin".equals(userName) && "123".equals(password)){
-            request.getSession().setAttribute("user",userName);
-            msg="login successful!";
-        }
-        return msg;
-    }
 }

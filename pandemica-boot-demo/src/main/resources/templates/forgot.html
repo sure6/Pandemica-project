@@ -20,36 +20,90 @@
 					<div class="card shadow-lg">
 						<div class="card-body p-5">
 							<h1 class="fs-4 card-title fw-bold mb-4">Forgot Password</h1>
-							<form method="POST" class="needs-validation" novalidate="" autocomplete="off">
+							<form class="needs-validation" novalidate="" autocomplete="off" id="forgotForm"  onsubmit="return func()">
 								<div class="mb-3">
-									<label class="mb-2 text-muted" for="email">E-Mail Address</label>
-									<input id="email" type="email" class="form-control" name="email" value="" required autofocus>
+<!--									<label class="mb-2 text-muted" for="email">E-Mail Address</label>-->
+<!--									<input id="email" type="email" class="form-control" name="email" value="" required autofocus>-->
+<!--									<div class="invalid-feedback">-->
+<!--										Email is invalid-->
+<!--									</div>-->
+									<label class="mb-2 text-muted" for="username">Username</label>
+									<input id="username" type="text" class="form-control" name="username" value="" required autofocus placeholder="Please Input your username">
 									<div class="invalid-feedback">
-										Email is invalid
+										Username is invalid
+									</div>
+								</div>
+								<div class="mb-3">
+									<label class="mb-2 text-muted" for="password">New Password</label>
+									<input id="password" type="password" class="form-control" name="password" value="" required  placeholder="Please Input your new password">
+									<div class="invalid-feedback">
+										Password is required
+									</div>
+								</div>
+
+								<div class="mb-3">
+									<label class="mb-2 text-muted" for="password-confirm">Confirm Password</label>
+									<input id="password-confirm" type="password" class="form-control" name="passwordConfirm" required placeholder="Please Input your new username again">
+									<div class="invalid-feedback">
+										Please confirm your new password
 									</div>
 								</div>
 
 								<div class="d-flex align-items-center">
-									<button type="submit" class="btn btn-primary ms-auto">
-										Send Link	
+									<button type="submit" class="btn btn-primary ms-auto" onclick="forgotForm()">
+										Reset Password
 									</button>
 								</div>
 							</form>
 						</div>
 						<div class="card-footer py-3 border-0">
 							<div class="text-center">
-								Remember your password? <a href="/index" class="text-dark">Login</a>
+								Remember your password? <a href="/userAccount/login" class="text-dark">Login</a>
 							</div>
 						</div>
 					</div>
 					<div class="text-center mt-5 text-muted">
-						Copyright &copy; 2017-2021 &mdash; Your Company 
+						Copyright &copy; 2021-2022 &mdash; group 17
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<script src="js/login.js"></script>
+	<script src="/js/login.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+			integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+			crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<!-- JavaScript Bundle with Popper -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+			crossorigin="anonymous"></script>
+	<script>
+		function func(){
+			return false;
+		}
+		function forgotForm(){
+			var forgetdata = $('#forgotForm').serialize();
+			console.log(forgetdata);
+			$.ajax({
+				type:"put",
+				dataType:"text",
+				contentType:"application/x-www-form-urlencoded; charset=utf-8",
+				url:"/userAccount/userForgot",
+				data: forgetdata,
+				success:function (result){
+					var resultObj = JSON.parse(result);
+					alert(resultObj.returnInfo);
+					if(resultObj.stateValue === "true"){
+						window.location.href="/userAccount/login";
+					}
+				},
+				error:function (){
+					alert("request failed!!")
+				}
+			});
+		}
+	</script>
+
 </body>
 </html>
