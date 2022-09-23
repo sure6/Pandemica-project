@@ -6,6 +6,7 @@ import com.csci927.pandemicabootdemo.bean.UserAccount;
 import com.csci927.pandemicabootdemo.service.UserAccountService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -60,17 +61,32 @@ public class UserAccountController {
 
     @ResponseBody
     @PostMapping("userLogin")
-    public JSONResult useLogin(@RequestParam String username, @RequestParam String password, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
-        if (StringUtils.isEmpty(username) && StringUtils.isEmpty(password)) {
-            return new JSONResult("false", "username and password is not NULL");
+    public JSONResult useLogin(@RequestParam String username, @RequestParam String password, @RequestParam(required = false) String remember, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
+        if (StringUtils.isEmpty(username) || StringUtils.isEmpty(password)) {
+            return new JSONResult("false", "username or password is not NULL");
         }
-        return userAccountService.doLogin(username.trim(), password.trim(), session, request, response);
+        if (StringUtils.isEmpty(remember)){
+            System.out.println("not rememer");
+            // The default cookie time is 30min
+            return userAccountService.doLoginWithSession(username,password, 30*60,session, request, response);
+        }
+        return userAccountService.doLoginWithSession(username.trim(), password.trim(),3 * 24 * 60 * 60, session, request, response);
 
+    }
+
+    @ResponseBody
+    @GetMapping("getCookiePw")
+    public String getCookiePw(@RequestParam String username){
+        UserAccount info = userAccountService.getUserInfoByAccount(username);
+        if(null==info){
+            return "";
+        }
+        return info.getPassword();
     }
     /**
      * logout
      */
-    @RequestMapping("logout")
+    @GetMapping("logout")
     public String logout(HttpSession session, HttpServletRequest request, HttpServletResponse response) {
         //  Delete the user information in the session
         session.removeAttribute("user_session");
@@ -82,7 +98,7 @@ public class UserAccountController {
         cookie_username.setPath("/");
         // Sending a cookie to the client
         response.addCookie(cookie_username);
-        return "login";
+        return "/index";
     }
 
 

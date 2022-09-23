@@ -19,8 +19,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 
@@ -41,9 +43,17 @@ class PandemicaBootDemoApplicationTests {
 
     @Test
     void TestUserAccountMapper(){
-
         List<UserAccount> userAccounts = userAccountMapper.selectByUsernameAndPassword("python1", getSHA256StrJava("qwe"));
         System.out.println(userAccounts.size());
+    }
+
+    @Test
+    void TestTime(){
+        long cookieCreatTime =  System.currentTimeMillis();
+        long cookieExpireTime = cookieCreatTime+ 15*60*1000;
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
+        System.out.println(sdf.format(new Date(cookieCreatTime)));
+        System.out.println(sdf.format(new Date(cookieExpireTime)));
     }
 
     /**

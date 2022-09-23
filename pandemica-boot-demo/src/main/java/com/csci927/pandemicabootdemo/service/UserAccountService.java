@@ -26,5 +26,5 @@ public interface UserAccountService extends IService<UserAccount> {
 
     UserAccount getUserInfoByAccount(String username);
 
-    JSONResult doLogin(String trim, String trim1, HttpSession session, HttpServletRequest request, HttpServletResponse response);
+    JSONResult doLoginWithSession(String username, String password,Integer cookieTime, HttpSession session, HttpServletRequest request, HttpServletResponse response);
 }

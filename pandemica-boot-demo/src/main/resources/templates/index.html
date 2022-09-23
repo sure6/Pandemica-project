@@ -13,6 +13,7 @@
         <!-- Fonts CSS-->
         <link rel="stylesheet" href="css/heading.css">
         <link rel="stylesheet" href="css/body.css">
+
     </head>
     <body id="page-top">
         <nav class="navbar navbar-expand-lg bg-secondary fixed-top" id="mainNav">
@@ -26,9 +27,10 @@
                         </li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">CONTACT</a>
                         </li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/register">REGISTER</a>
+
+                        <li class="nav-item mx-0 mx-lg-1" id="register"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/register" >REGISTER</a>
                         </li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/userAccount/login">LOGIN</a>
+                        <li class="nav-item mx-0 mx-lg-1" id="login"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/userAccount/login" >LOGIN</a>
                         </li>
                     </ul>
                 </div>
@@ -361,9 +363,37 @@ Clark, MO 65243</p>
         <script src="mail/jqBootstrapValidation.js"></script>
         <script src="mail/contact_me.js"></script>
         <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
+        <script src="/js/scripts.js"></script>
         <script>
 
+            function cookie(name){
+                var cookieArray=document.cookie.split("; ");
+                var cookie=new Object();
+                for (var i=0;i<cookieArray.length;i++){
+                    var arr=cookieArray[i].split("=");
+                    if(arr[0]==name)return unescape(arr[1]);
+                }
+                return "";
+            }
+
+            // logout
+            function logout(){
+                var logoutInfo = window.confirm("Determine whether to log out!!!");
+                if(logoutInfo){
+                    $.get("/userAccount/logout",function (){
+                        location.reload();
+                    });
+                }
+
+            }
+            (function(){
+                var cookie_test = cookie("cookie_username");
+                if("" !== cookie_test) {
+                    $('#register').replaceWith('<li class="mx-0 mx-lg-1"><span class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger text-success" >'+cookie_test.toUpperCase()+'</span></li>')
+                    $('#login').replaceWith('<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" onclick="logout()" >LOGOUT</a></li>')
+                }
+
+            })()
         </script>
     </body>
 </html>

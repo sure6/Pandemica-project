@@ -16,6 +16,8 @@ import javax.servlet.http.HttpSession;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -62,7 +64,7 @@ public class UserAccountServiceImpl extends ServiceImpl<UserAccountMapper, UserA
     }
 
     @Override
-    public JSONResult doLogin(String username, String password, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
+    public JSONResult doLoginWithSession(String username, String password,Integer cookieTime, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
         JSONResult jsonResult = new JSONResult();
         jsonResult.setStateValue("false");
         UserAccount userAccount = userAccountMapper.selectUserInfoByAccount(username);
@@ -76,17 +78,15 @@ public class UserAccountServiceImpl extends ServiceImpl<UserAccountMapper, UserA
             jsonResult.setReturnInfo("The username or password is incorrect. Please check and try again");
             return jsonResult;
         }
-        System.out.println(userAccount);
-        // 将登录用户信息保存到session中
+        // The login user information is saved to the session
         session.setAttribute("user_session", userAccount);
-        // 保存cookie，实现自动登录
+        // Save the cookie for automatic login
         Cookie cookie_username = new Cookie("cookie_username", username);
-        // 设置cookie的持久化时间，30天
-        cookie_username.setMaxAge(30 * 24 * 60 * 60);
-        // 设置为当前项目下都携带这个cookie
-
+        // Set the cookie persistence period to cookie Time
+        cookie_username.setMaxAge(cookieTime);
+        // Set this cookie to be carried by all current projects
         cookie_username.setPath("/");
-        // 向客户端发送cookie
+        // Sending a cookie to the client
         response.addCookie(cookie_username);
         jsonResult.setStateValue("true");
         jsonResult.setReturnInfo("login successfully");

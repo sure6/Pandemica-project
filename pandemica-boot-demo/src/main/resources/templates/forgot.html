@@ -83,25 +83,27 @@
 			return false;
 		}
 		function forgotForm(){
-			var forgetdata = $('#forgotForm').serialize();
-			console.log(forgetdata);
-			$.ajax({
-				type:"put",
-				dataType:"text",
-				contentType:"application/x-www-form-urlencoded; charset=utf-8",
-				url:"/userAccount/userForgot",
-				data: forgetdata,
-				success:function (result){
-					var resultObj = JSON.parse(result);
-					alert(resultObj.returnInfo);
-					if(resultObj.stateValue === "true"){
-						window.location.href="/userAccount/login";
+			var confirmed=confirm("Are you sure to change the password?")
+			if (confirmed){
+				var forgetdata = $('#forgotForm').serialize();
+				$.ajax({
+					type:"put",
+					dataType:"text",
+					contentType:"application/x-www-form-urlencoded; charset=utf-8",
+					url:"/userAccount/userForgot",
+					data: forgetdata,
+					success:function (result){
+						var resultObj = JSON.parse(result);
+						alert(resultObj.returnInfo);
+						if(resultObj.stateValue === "true"){
+							window.location.href="/userAccount/login";
+						}
+					},
+					error:function (){
+						alert("request failed!!")
 					}
-				},
-				error:function (){
-					alert("request failed!!")
-				}
-			});
+				});
+			}
 		}
 	</script>
 
