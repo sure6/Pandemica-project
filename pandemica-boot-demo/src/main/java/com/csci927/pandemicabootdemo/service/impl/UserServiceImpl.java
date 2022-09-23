@@ -38,7 +38,25 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
                 StringUtils.isEmpty(user.getPosition())) {
             throw new Exception("first name and last name and email and phone number and position is not null");
         }
+
+        if(this.verifyPhone(user.getPhoneNumber())){
+            throw new Exception("The Phone Number you Entered already exists!!!");
+        }
+        if(this.verifyEmail(user.getEmail())){
+            throw new Exception("The Email you Entered already exists!!!");
+        }
         return userMapper.insertUser(user);
     }
+
+    @Override
+    public Boolean verifyPhone(String phone) {
+        return userMapper.selectPhone(phone).size()>0;
+    }
+
+    @Override
+    public Boolean verifyEmail(String email) {
+        return userMapper.selectEmail(email).size()>0;
+    }
+
 
 }

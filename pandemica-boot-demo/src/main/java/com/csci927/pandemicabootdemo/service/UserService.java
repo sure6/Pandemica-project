@@ -18,4 +18,8 @@ public interface UserService extends IService<User> {
     List<User> queryAllUser();
 
     Integer addUser(User user) throws Exception;
+
+    Boolean verifyPhone(String phone);
+    Boolean verifyEmail(String email);
+
 }

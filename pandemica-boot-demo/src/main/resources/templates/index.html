@@ -389,8 +389,8 @@ Clark, MO 65243</p>
             (function(){
                 var cookie_test = cookie("cookie_username");
                 if("" !== cookie_test) {
-                    $('#register').replaceWith('<li class="mx-0 mx-lg-1"><span class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger text-success" >'+cookie_test.toUpperCase()+'</span></li>')
-                    $('#login').replaceWith('<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" onclick="logout()" >LOGOUT</a></li>')
+                    $('#register').replaceWith('<li class="mx-0 mx-lg-1"><span class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger text-success" >'+cookie_test+'</span></li>')
+                    $('#login').replaceWith('<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger btn btn-outline-primary" onclick="logout()"  style="font-weight: 600;color: azure;">LOGOUT</a></li>')
                 }
 
             })()

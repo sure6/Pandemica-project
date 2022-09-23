@@ -27,4 +27,12 @@
         insert into User(<include refid="Base_Column_List"/>) values(#{userID},#{firstName},#{lastName},
         #{age},#{gender},#{phoneNumber},#{email},#{position});
     </insert>
+
+    <select id="selectPhone" parameterType="java.lang.String" resultType="com.csci927.pandemicabootdemo.bean.User">
+        select <include refid="Base_Column_List"/> from User where phoneNumber = #{phoneNumber};
+    </select>
+
+    <select id="selectEmail" parameterType="java.lang.String" resultType="com.csci927.pandemicabootdemo.bean.User">
+        select <include refid="Base_Column_List"/> from User where email = #{email};
+    </select>
 </mapper>
