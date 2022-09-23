@@ -23,5 +23,6 @@
     <module>pandemica-api</module>
     <module>pandemica-provider</module>
     <module>pandemica-consumer</module>
+    <module>pandemica-boot-demo</module>
   </modules>
 </project>

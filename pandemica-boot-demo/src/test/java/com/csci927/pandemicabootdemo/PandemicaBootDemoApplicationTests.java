@@ -104,7 +104,7 @@ class PandemicaBootDemoApplicationTests {
         //Global Configuration
         GlobalConfig globalConfig = new GlobalConfig();
         globalConfig.setAuthor("sure")
-                .setOutputDir("E:\\idea-workspaces\\Pandemica-project\\pandemica-boot-demo\\src\\main\\java")//设置输出路径
+                .setOutputDir("E:\\idea-workspaces\\Pandemica-project\\pandemica-boot-demo\\src\\main\\java")
                 .setFileOverride(true)//Setting file overwrite
                 .setIdType(IdType.AUTO)//Set the primary key generation policy
                 .setServiceName("%sService")//set name for service interface
