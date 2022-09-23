@@ -17,4 +17,8 @@ public interface UserMapper extends BaseMapper<User> {
     List<User> selectAll();
 
     int insertUser(User user);
+
+    List<User> selectPhone(String phoneNumber);
+
+    List<User> selectEmail(String email);
 }
