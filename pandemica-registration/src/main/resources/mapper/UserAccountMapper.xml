@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.csci927.pandemicaregistration.mapper.UserAccountMapper">
+
+    <!-- Mapping results of a general query -->
+    <resultMap id="BaseResultMap" type="com.csci927.pandemicaapi.bean.UserAccount">
+        <id column="username" property="username" />
+        <result column="password" property="password" />
+        <result column="userID" property="userID" />
+    </resultMap>
+
+    <!-- Generic query result column -->
+    <sql id="Base_Column_List">
+        username, password, userID
+    </sql>
+
+    <insert id="insertUserAccount" parameterType="com.csci927.pandemicaapi.bean.UserAccount">
+        insert into UserAccount(<include refid="Base_Column_List"/>) values(#{username},#{password},#{userID});
+    </insert>
+
+    <select id="selectByUsernameAndPassword" parameterType="java.lang.String" resultType="com.csci927.pandemicaapi.bean.UserAccount">
+        select <include refid="Base_Column_List"/> from UserAccount where username=#{username} and password= #{password};
+    </select>
+
+    <select id="selectUserInfoByAccount" parameterType="java.lang.String" resultType="com.csci927.pandemicaapi.bean.UserAccount">
+        select <include refid="Base_Column_List"/> from UserAccount where username=#{username};
+    </select>
+
+    <update id="updatePassword" parameterType="java.lang.String">
+        update UserAccount set password= #{password} where username=#{username};
+    </update>
+ </mapper>
