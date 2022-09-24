@@ -21,8 +21,8 @@
 <!--  sub-module -->
   <modules>
     <module>pandemica-api</module>
-    <module>pandemica-provider</module>
-    <module>pandemica-consumer</module>
-    <module>pandemica-boot-demo</module>
+    <module>pandemica-home</module>
+    <module>pandemica-registration</module>
+    <module>pandemica-reverse-engneering</module>
   </modules>
 </project>
