@@ -104,10 +104,15 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <!--fork:Without this configuration, the entire DevTools will not work -->
+                    <fork>true</fork>
+                    <addResources>true</addResources>
+                    <classifier>exec</classifier>
+                </configuration>
             </plugin>
             <!-- docker plugin begin -->
             <plugin>
-
                 <groupId>com.spotify</groupId>
                 <artifactId>dockerfile-maven-plugin</artifactId>
                 <version>1.4.10</version>

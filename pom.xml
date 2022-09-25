@@ -20,7 +20,6 @@
 
 <!--  sub-module -->
   <modules>
-    <module>pandemica-api</module>
     <module>pandemica-home</module>
     <module>pandemica-registration</module>
     <module>pandemica-reverse-engneering</module>

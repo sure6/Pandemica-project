@@ -2,12 +2,11 @@ package com.cscsi927.pandemicahome.controller;
 
 
 
-import com.csci927.pandemicaapi.bean.JSONResult;
-import com.csci927.pandemicaapi.bean.User;
-import com.csci927.pandemicaapi.service.UserAccountService;
-import com.csci927.pandemicaapi.service.UserService;
+import com.csci927.pandemicaregistration.bean.JSONResult;
+import com.csci927.pandemicaregistration.bean.User;
+import com.csci927.pandemicaregistration.sevice.UserAccountService;
+import com.csci927.pandemicaregistration.sevice.UserService;
 import org.apache.dubbo.config.annotation.DubboReference;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;

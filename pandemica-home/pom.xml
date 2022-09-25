@@ -11,7 +11,7 @@
     <groupId>com.cscsi927</groupId>
     <artifactId>pandemica-home</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <name>pandemica-home</name>
     <description>pandemica-home</description>
     <properties>
@@ -72,9 +72,33 @@
             <scope>runtime</scope>
         </dependency>
 
+        <!--        mybastis reverse engineering-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>3.4.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-generator</artifactId>
+            <version>3.3.2</version>
+
+            <exclusions>
+                <exclusion>
+                    <groupId>com.baomidou</groupId>
+                    <artifactId>mybatis-plus-extension</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity-engine-core</artifactId>
+            <version>2.0</version>
+        </dependency>
+
         <dependency>
             <groupId>com.csci927</groupId>
-            <artifactId>pandemica-api</artifactId>
+            <artifactId>pandemica-registration</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
@@ -82,6 +106,7 @@
 
 
     <build>
+        <finalName>home</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -90,6 +115,30 @@
                     <!--fork:Without this configuration, the entire DevTools will not work -->
                     <fork>true</fork>
                     <addResources>true</addResources>
+                </configuration>
+            </plugin>
+
+
+            <!-- docker plugin begin -->
+            <plugin>
+
+                <groupId>com.spotify</groupId>
+                <artifactId>dockerfile-maven-plugin</artifactId>
+                <version>1.4.10</version>
+                <configuration>
+                    <repository>pandemica-cloud/${project.artifactId}</repository>
+                    <buildArgs>
+                        <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
+                    </buildArgs>
+                </configuration>
+            </plugin>
+            <!-- docker plugin end -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.2</version>
+                <configuration>
+                    <skipTests>true</skipTests>
                 </configuration>
             </plugin>
         </plugins>

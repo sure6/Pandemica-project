@@ -1,8 +1,9 @@
 package com.cscsi927.pandemicahome.config;
 
 
-import com.csci927.pandemicaapi.bean.UserAccount;
-import com.csci927.pandemicaapi.service.UserAccountService;
+
+import com.csci927.pandemicaregistration.bean.UserAccount;
+import com.csci927.pandemicaregistration.sevice.UserAccountService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.context.annotation.Configuration;
