@@ -108,12 +108,13 @@ public class UserAccountController {
     /**
      * logout
      */
+
     @GetMapping("logout")
-    public String logout(HttpSession session, HttpServletRequest request, HttpServletResponse response) {
+    public String logout(HttpSession session, HttpServletResponse response) {
         //  Delete the user information in the session
         session.removeAttribute("user_session");
         // Save the cookie for automatic login
-        Cookie cookie_username = new Cookie("cookie_username", "");
+        Cookie cookie_username = new Cookie("cookie_username", null);
         // Set the cookie persistence time to 0
         cookie_username.setMaxAge(0);
         // Set to the current project carries this cookie
