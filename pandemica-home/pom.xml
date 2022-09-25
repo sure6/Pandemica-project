@@ -43,13 +43,14 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-<!--dubbo-->
+
+        <!--dubbo-->
         <dependency>
             <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo-spring-boot-starter</artifactId>
             <version>2.7.8</version>
         </dependency>
-<!--        zookeeper-->
+        <!-- zookeeper-->
         <dependency>
             <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo-dependencies-zookeeper</artifactId>
@@ -63,7 +64,7 @@
             </exclusions>
         </dependency>
 
-        <!--        spring boot hot deploy-->
+        <!-- spring boot hot deploy-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
