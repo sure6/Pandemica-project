@@ -1,7 +1,8 @@
-package com.csci927.pandemicaapi.service;
+package com.csci927.pandemicaregistration.sevice;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.csci927.pandemicaapi.bean.Application;
+import com.csci927.pandemicaregistration.bean.Application;
+
 
 /**
  * <p>

@@ -3,7 +3,7 @@
 <mapper namespace="com.csci927.pandemicaregistration.mapper.ApplicationMapper">
 
     <!-- Mapping results of a general query -->
-    <resultMap id="BaseResultMap" type="com.csci927.pandemicaapi.bean.Application">
+    <resultMap id="BaseResultMap" type="com.csci927.pandemicaregistration.bean.Application">
         <id column="applicationID" property="applicationID" />
         <result column="applicationInfo" property="applicationInfo" />
         <result column="compensationAmount" property="compensationAmount" />

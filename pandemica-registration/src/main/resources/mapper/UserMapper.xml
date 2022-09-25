@@ -3,7 +3,7 @@
 <mapper namespace="com.csci927.pandemicaregistration.mapper.UserMapper">
 
     <!-- Mapping results of a general query -->
-    <resultMap id="BaseResultMap" type="com.csci927.pandemicaapi.bean.User">
+    <resultMap id="BaseResultMap" type="com.csci927.pandemicaregistration.bean.User">
         <id column="userID" property="userID" />
         <result column="firstName" property="firstName" />
         <result column="lastName" property="lastName" />
@@ -23,16 +23,16 @@
         select <include refid="Base_Column_List"/> from User;
     </select>
 
-    <insert id="insertUser" parameterType="com.csci927.pandemicaapi.bean.User">
+    <insert id="insertUser" parameterType="com.csci927.pandemicaregistration.bean.User">
         insert into User(<include refid="Base_Column_List"/>) values(#{userID},#{firstName},#{lastName},
         #{age},#{gender},#{phoneNumber},#{email},#{position});
     </insert>
 
-    <select id="selectPhone" parameterType="java.lang.String" resultType="com.csci927.pandemicaapi.bean.User">
+    <select id="selectPhone" parameterType="java.lang.String" resultType="com.csci927.pandemicaregistration.bean.User">
         select <include refid="Base_Column_List"/> from User where phoneNumber = #{phoneNumber};
     </select>
 
-    <select id="selectEmail" parameterType="java.lang.String" resultType="com.csci927.pandemicaapi.bean.User">
+    <select id="selectEmail" parameterType="java.lang.String" resultType="com.csci927.pandemicaregistration.bean.User">
         select <include refid="Base_Column_List"/> from User where email = #{email};
     </select>
 </mapper>

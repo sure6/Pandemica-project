@@ -1,4 +1,4 @@
-package com.csci927.pandemicaapi.bean;
+package com.csci927.pandemicaregistration.bean;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;

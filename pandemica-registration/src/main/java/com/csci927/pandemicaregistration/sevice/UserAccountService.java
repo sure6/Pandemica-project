@@ -1,13 +1,8 @@
-package com.csci927.pandemicaapi.service;
+package com.csci927.pandemicaregistration.sevice;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.csci927.pandemicaapi.bean.JSONResult;
-import com.csci927.pandemicaapi.bean.UserAccount;
-
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import com.csci927.pandemicaregistration.bean.JSONResult;
+import com.csci927.pandemicaregistration.bean.UserAccount;
 
 /**
  * <p>

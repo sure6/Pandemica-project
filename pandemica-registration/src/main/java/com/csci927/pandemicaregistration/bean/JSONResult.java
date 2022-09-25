@@ -1,4 +1,4 @@
-package com.csci927.pandemicaapi.bean;
+package com.csci927.pandemicaregistration.bean;
 
 import java.io.Serializable;
 

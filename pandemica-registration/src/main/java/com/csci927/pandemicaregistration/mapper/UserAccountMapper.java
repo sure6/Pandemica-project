@@ -1,7 +1,7 @@
 package com.csci927.pandemicaregistration.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.csci927.pandemicaapi.bean.UserAccount;
+import com.csci927.pandemicaregistration.bean.UserAccount;
 
 import java.util.List;
 

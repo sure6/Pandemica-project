@@ -2,9 +2,9 @@ package com.csci927.pandemicaregistration.sevice.impl;
 
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.csci927.pandemicaapi.bean.Application;
+import com.csci927.pandemicaregistration.bean.Application;
 import com.csci927.pandemicaregistration.mapper.ApplicationMapper;
-import com.csci927.pandemicaapi.service.ApplicationService;
+import com.csci927.pandemicaregistration.sevice.ApplicationService;
 import org.apache.dubbo.config.annotation.DubboService;
 
 /**
