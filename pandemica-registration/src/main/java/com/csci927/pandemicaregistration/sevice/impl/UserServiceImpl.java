@@ -19,7 +19,7 @@ import java.util.List;
  * @author sure
  * @since 2022-09-21
  */
-@DubboService(interfaceClass = UserService.class,version = "1.0.1", timeout = 6000000)
+@DubboService(interfaceClass = UserService.class,version = "1.0.1", timeout = 60000)
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
 
     @Autowired

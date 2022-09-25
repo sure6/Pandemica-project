@@ -9,10 +9,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -26,7 +22,7 @@ import java.util.List;
  * @author sure
  * @since 2022-09-21
  */
-@DubboService(interfaceClass = UserAccountService.class, version = "1.0.1",timeout = 6000000)
+@DubboService(interfaceClass = UserAccountService.class, version = "1.0.1",timeout = 60000)
 public class UserAccountServiceImpl extends ServiceImpl<UserAccountMapper, UserAccount> implements UserAccountService {
 
     @Autowired

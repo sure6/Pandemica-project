@@ -15,7 +15,7 @@ import org.apache.dubbo.config.annotation.DubboService;
  * @author sure
  * @since 2022-09-21
  */
-@DubboService(interfaceClass = ApplicationService.class, version = "1.0.0",timeout = 6000000)
+@DubboService(interfaceClass = ApplicationService.class, version = "1.0.0",timeout = 60000)
 public class ApplicationServiceImpl extends ServiceImpl<ApplicationMapper, Application> implements ApplicationService {
 
 }

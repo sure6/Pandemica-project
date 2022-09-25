@@ -14,7 +14,7 @@ import org.apache.dubbo.config.annotation.DubboService;
  * @author sure
  * @since 2022-09-21
  */
-@DubboService(interfaceClass = ComplaintService.class, version = "1.0.0",timeout = 6000000)
+@DubboService(interfaceClass = ComplaintService.class, version = "1.0.0",timeout = 60000)
 public class ComplaintServiceImpl extends ServiceImpl<ComplaintMapper, Complaint> implements ComplaintService {
 
 }
