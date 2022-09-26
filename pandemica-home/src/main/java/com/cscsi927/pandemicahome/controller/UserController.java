@@ -6,12 +6,10 @@ import com.csci927.pandemicaregistration.bean.JSONResult;
 import com.csci927.pandemicaregistration.bean.User;
 import com.csci927.pandemicaregistration.sevice.UserAccountService;
 import com.csci927.pandemicaregistration.sevice.UserService;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -31,12 +29,8 @@ public class UserController {
     @DubboReference(interfaceClass = UserAccountService.class,version = "1.0.1",check = true)
     private UserAccountService userAccountService;
 
-    @GetMapping("/")
+    @GetMapping({"/index","/"})
     public String index(){
-        return "/index.html";
-    }
-    @GetMapping("/index")
-    public String index2(){
         return "/index.html";
     }
 
@@ -67,6 +61,17 @@ public class UserController {
             return new JSONResult("false",e.toString());
         }
         return new JSONResult("true", "Registration successful!!!");
+    }
+
+    @ResponseBody
+    @GetMapping("/oauth/getUserInfo/{username}")
+    public User getUseinfo(@PathVariable String username){
+        String userID = userAccountService.getUserID(username);
+        User user = null;
+        if(!StringUtils.isEmpty(userID)){
+            user = userService.getUserByUserId(userID);
+        }
+        return user;
     }
 }
 

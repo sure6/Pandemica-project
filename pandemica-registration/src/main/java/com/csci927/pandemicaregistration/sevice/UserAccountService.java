@@ -22,5 +22,7 @@ public interface UserAccountService extends IService<UserAccount> {
 
     UserAccount getUserInfoByAccount(String username);
 
+    String getUserID(String username);
+
     JSONResult doLogin(String username, String password);
 }

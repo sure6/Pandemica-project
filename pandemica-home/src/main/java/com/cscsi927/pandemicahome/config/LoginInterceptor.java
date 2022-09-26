@@ -7,6 +7,7 @@ import com.csci927.pandemicaregistration.sevice.UserAccountService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.Cookie;
@@ -15,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 
-@Configuration
+@Component
 public class LoginInterceptor implements HandlerInterceptor {
 
 

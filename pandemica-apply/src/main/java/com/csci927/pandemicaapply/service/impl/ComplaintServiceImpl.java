@@ -1,10 +1,12 @@
-package com.csci927.pandemicaregistration.sevice.impl;
+package com.csci927.pandemicaapply.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.csci927.pandemicaregistration.bean.Complaint;
-import com.csci927.pandemicaregistration.mapper.ComplaintMapper;
-import com.csci927.pandemicaregistration.sevice.ComplaintService;
+import com.csci927.pandemicaapply.bean.Complaint;
+import com.csci927.pandemicaapply.mapper.ComplaintMapper;
+import com.csci927.pandemicaapply.service.ComplaintService;
 import org.apache.dubbo.config.annotation.DubboService;
+
+import java.io.Serializable;
 
 /**
  * <p>

@@ -23,5 +23,6 @@
     <module>pandemica-home</module>
     <module>pandemica-registration</module>
     <module>pandemica-reverse-engneering</module>
+    <module>pandemica-apply</module>
   </modules>
 </project>

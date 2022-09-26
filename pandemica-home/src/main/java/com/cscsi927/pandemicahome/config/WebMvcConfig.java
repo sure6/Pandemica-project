@@ -19,7 +19,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         InterceptorRegistration ir = registry.addInterceptor(loginInterceptor);
         // Intercept path
-        ir.addPathPatterns("/oauth/*");
+        ir.addPathPatterns("/oauth/**");
         // Do not intercept paths
         List<String> irs = new ArrayList<String>();
         irs.add("/userAccount/*");

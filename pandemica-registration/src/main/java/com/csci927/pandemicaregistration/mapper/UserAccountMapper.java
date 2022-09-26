@@ -21,4 +21,6 @@ public interface UserAccountMapper extends BaseMapper<UserAccount> {
     UserAccount selectUserInfoByAccount(String username);
 
     int updatePassword(String username, String password);
+
+    List<String> selectByUsername(String username);
 }

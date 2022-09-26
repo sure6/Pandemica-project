@@ -58,6 +58,18 @@ public class UserAccountServiceImpl extends ServiceImpl<UserAccountMapper, UserA
     }
 
     @Override
+    public String getUserID(String username) {
+        if(StringUtils.isEmpty(username)){
+            return null;
+        }
+        List<String> strings = userAccountMapper.selectByUsername(username);
+        if(strings.size()>0 && !StringUtils.isEmpty(strings.get(0))){
+            return strings.get(0);
+        }
+        return null;
+    }
+
+    @Override
     public JSONResult doLogin(String username, String password) {
         JSONResult jsonResult = new JSONResult();
         jsonResult.setStateValue("false");

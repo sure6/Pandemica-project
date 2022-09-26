@@ -35,4 +35,8 @@
     <select id="selectEmail" parameterType="java.lang.String" resultType="com.csci927.pandemicaregistration.bean.User">
         select <include refid="Base_Column_List"/> from User where email = #{email};
     </select>
+
+    <select id="selectUser" parameterType="java.lang.String" resultType="com.csci927.pandemicaregistration.bean.User" >
+        select <include refid="Base_Column_List"/> from User where userID = #{userID};
+    </select>
 </mapper>

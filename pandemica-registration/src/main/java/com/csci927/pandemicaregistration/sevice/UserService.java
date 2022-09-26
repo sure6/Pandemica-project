@@ -22,4 +22,5 @@ public interface UserService extends IService<User> {
     Boolean verifyPhone(String phone);
     Boolean verifyEmail(String email);
 
+    User getUserByUserId(String userID);
 }

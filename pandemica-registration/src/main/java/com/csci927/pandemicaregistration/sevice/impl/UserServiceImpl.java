@@ -58,6 +58,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     public Boolean verifyEmail(String email) {
         return userMapper.selectEmail(email).size()>0;
     }
+    @Override
+    public User getUserByUserId(String userID){
+        return userMapper.selectUser(userID);
+    }
 
 
 }

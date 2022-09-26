@@ -8,12 +8,12 @@
         <version>2.7.4</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.cscsi927</groupId>
-    <artifactId>pandemica-home</artifactId>
+    <groupId>com.csci927</groupId>
+    <artifactId>pandemica-apply</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>pandemica-home</name>
-    <description>pandemica-home</description>
+    <name>pandemica-apply</name>
+    <description>pandemica-apply</description>
     <properties>
         <java.version>1.8</java.version>
     </properties>
@@ -28,6 +28,12 @@
             <version>2.2.2</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+            <optional>true</optional>
+        </dependency>
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -44,13 +50,12 @@
             <scope>test</scope>
         </dependency>
 
-        <!--dubbo-->
+        <!--  The starter of Dubbo is introduced  -->
         <dependency>
             <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo-spring-boot-starter</artifactId>
             <version>2.7.8</version>
         </dependency>
-        <!-- zookeeper-->
         <dependency>
             <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo-dependencies-zookeeper</artifactId>
@@ -62,14 +67,6 @@
                     <artifactId>slf4j-log4j12</artifactId>
                 </exclusion>
             </exclusions>
-        </dependency>
-
-        <!-- spring boot hot deploy-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <optional>true</optional>
-            <scope>runtime</scope>
         </dependency>
 
         <!--        mybastis reverse engineering-->
@@ -95,60 +92,15 @@
             <artifactId>velocity-engine-core</artifactId>
             <version>2.0</version>
         </dependency>
-
-        <dependency>
-            <groupId>com.csci927</groupId>
-            <artifactId>pandemica-registration</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.csci927</groupId>
-            <artifactId>pandemica-apply</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
     </dependencies>
 
-
     <build>
-        <finalName>home</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <!--fork:Without this configuration, the entire DevTools will not work -->
-                    <fork>true</fork>
-                    <addResources>true</addResources>
-                </configuration>
-            </plugin>
-
-
-            <!-- docker plugin begin -->
-            <plugin>
-
-                <groupId>com.spotify</groupId>
-                <artifactId>dockerfile-maven-plugin</artifactId>
-                <version>1.4.10</version>
-                <configuration>
-                    <repository>pandemica-cloud/${project.artifactId}</repository>
-                    <buildArgs>
-                        <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
-                    </buildArgs>
-                </configuration>
-            </plugin>
-            <!-- docker plugin end -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.2</version>
-                <configuration>
-                    <skipTests>true</skipTests>
-                </configuration>
             </plugin>
         </plugins>
     </build>
-
 
 </project>

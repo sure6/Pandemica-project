@@ -1,9 +1,10 @@
-package com.csci927.pandemicaregistration.bean;
+package com.csci927.pandemicaapply.bean;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -21,9 +22,6 @@ public class Application implements Serializable {
 
     private static final long serialVersionUID = -5435794470754667710L;
 
-      @TableId(value = "applicationID", type = IdType.AUTO)
-    private Integer applicationID;
-
     @TableField("applicationInfo")
     private String applicationInfo;
 
@@ -33,14 +31,6 @@ public class Application implements Serializable {
     @TableField("userID")
     private String userID;
 
-
-    public Integer getApplicationID() {
-        return applicationID;
-    }
-
-    public void setApplicationID(Integer applicationID) {
-        this.applicationID = applicationID;
-    }
 
     public String getApplicationInfo() {
         return applicationInfo;
@@ -69,8 +59,7 @@ public class Application implements Serializable {
     @Override
     public String toString() {
         return "Application{" +
-        "applicationID=" + applicationID +
-        ", applicationInfo=" + applicationInfo +
+        "applicationInfo=" + applicationInfo +
         ", compensationAmount=" + compensationAmount +
         ", userID=" + userID +
         "}";
