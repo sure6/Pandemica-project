@@ -37,9 +37,11 @@ create table if not exists Application
     userID             varchar(100)  not null primary key
 );
 
-create table if not exists Complaint
+create table Complaint
 (
+    complaintID     int auto_increment
+        primary key,
     complaintInfo   varchar(5000) not null,
     complaintAmount decimal(7, 2) not null,
-    userID          varchar(100)  not null primary key
+    userID          varchar(100)  not null
 );
