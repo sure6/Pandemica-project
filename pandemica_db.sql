@@ -1,21 +1,7 @@
 create database if not exists csci927service;
 use csci927service;
 
-create table Application
-(
-    applicationInfo    varchar(5000) not null,
-    compensationAmount decimal(7, 2) not null,
-    userID             varchar(100)  not null primary key
-);
-
-create table Complaint
-(
-    complaintInfo   varchar(5000) not null,
-    complaintAmount decimal(7, 2) not null,
-    userID          varchar(100)  not null primary key
-);
-
-create table User
+create table if not exists User
 (
     firstName   varchar(100) not null,
     lastName    varchar(100) not null,
@@ -32,11 +18,28 @@ create table User
         unique (email)
 );
 
-create table UserAccount
+create table if not exists UserAccount
 (
     username varchar(100) not null
         primary key,
     password varchar(100) not null,
     userID   varchar(100) not null,
     constraint ua_unique unique (userID)
+);
+
+create database if not exists pandemicaapply;
+use pandemicaapply;
+
+create table if not exists Application
+(
+    applicationInfo    varchar(5000) not null,
+    compensationAmount decimal(7, 2) not null,
+    userID             varchar(100)  not null primary key
+);
+
+create table if not exists Complaint
+(
+    complaintInfo   varchar(5000) not null,
+    complaintAmount decimal(7, 2) not null,
+    userID          varchar(100)  not null primary key
 );
