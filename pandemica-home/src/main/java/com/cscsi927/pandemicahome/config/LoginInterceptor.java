@@ -26,13 +26,11 @@ public class LoginInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         // get cookie
         Cookie[] cookies = request.getCookies();
-
         // If no cookie information is displayed, the user is redirected to the login page
         if (null == cookies) {
             response.sendRedirect(request.getContextPath() + "/userAccount/login");
             return false;
         }
-        System.out.println(cookies.length);
         // Define COOKIE_USERNAME, some login information of the user, such as username, password, etc
         String cookie_username = null;
         // Get some user information in the cookie
@@ -43,7 +41,6 @@ public class LoginInterceptor implements HandlerInterceptor {
                 break;
             }
         }
-        System.out.println(cookies[0].getName());
         // If the cookie does not contain some login information for the user, the user is redirected to the login screen
         if (StringUtils.isEmpty(cookie_username)) {
             response.sendRedirect(request.getContextPath() + "/userAccount/login");

@@ -39,6 +39,12 @@ public class ApplicationController {
             jsonResult.setReturnInfo("Application Comments or Compensation Amount or UserID is NOT empty!");
             return jsonResult;
         }
+        boolean hasApplicaiton = applicationService.getApplicationByUserID(application.getUserID());
+        if(hasApplicaiton){
+            jsonResult.setStateValue("false");
+            jsonResult.setReturnInfo("You have applied for compensation, please do not enter it again!");
+            return jsonResult;
+        }
         boolean bool = applicationService.save(application);
         if(bool){
             jsonResult.setStateValue("true");

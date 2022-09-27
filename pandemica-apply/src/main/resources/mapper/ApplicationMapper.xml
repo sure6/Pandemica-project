@@ -21,4 +21,8 @@
     <insert id="insert" parameterType="com.csci927.pandemicaapply.bean.Application">
         insert into pandemicaapply.Application(<include refid="Base_Column_List"/>) values(#{applicationInfo},#{compensationAmount},#{userID});
     </insert>
+
+    <select id="selectByUserID" resultType="com.csci927.pandemicaapply.bean.Application" parameterType="java.lang.String">
+        select <include refid="Base_Column_List"/> from pandemicaapply.Application where userID = #{userID};
+    </select>
 </mapper>

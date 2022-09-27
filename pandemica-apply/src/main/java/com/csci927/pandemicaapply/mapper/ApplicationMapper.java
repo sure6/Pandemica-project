@@ -17,4 +17,6 @@ import java.util.List;
  */
 public interface ApplicationMapper extends BaseMapper<Application> {
     List<Application> selectAll();
+
+    List<Application> selectByUserID(String userID);
 }
