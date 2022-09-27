@@ -14,4 +14,7 @@ import com.csci927.pandemicaapply.bean.Complaint;
  */
 public interface ComplaintService extends IService<Complaint> {
 
+    boolean saveComplaint(Complaint complaint);
+
+    boolean getComplaintByUserID(String userID);
 }

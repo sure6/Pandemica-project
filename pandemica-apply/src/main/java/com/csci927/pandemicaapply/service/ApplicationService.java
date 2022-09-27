@@ -15,4 +15,6 @@ import com.csci927.pandemicaapply.bean.Application;
 public interface ApplicationService extends IService<Application> {
 
     boolean getApplicationByUserID(String userID);
+
+    Application getInfoByUserID(String userID);
 }

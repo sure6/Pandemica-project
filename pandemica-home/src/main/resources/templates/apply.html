@@ -207,13 +207,13 @@
                     $("#userID").val(result.userID);
                 } else {
                     alert("user does not exist !!! return the index");
-                    window.location.href="/index";
+                    window.location.href="/userAccount/login";
                 }
 
             })
         }else {
-            // alert("You are not logged in. go log in again!!!");
-            // window.location.href="/index";
+            alert("You are not logged in. go log in again!!!");
+            window.location.href="/index";
         }
 
     })()

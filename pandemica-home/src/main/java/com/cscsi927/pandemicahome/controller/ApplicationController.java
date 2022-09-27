@@ -33,7 +33,6 @@ public class ApplicationController {
     @PostMapping("application/saveApplication")
     public JSONResult saveApplicationInfo(@RequestBody Application application) {
         JSONResult jsonResult = new JSONResult();
-        System.out.println(application);
         if (StringUtils.isEmpty(application.getApplicationInfo()) || application.getCompensationAmount() == null || StringUtils.isEmpty(application.getUserID())) {
             jsonResult.setStateValue("false");
             jsonResult.setReturnInfo("Application Comments or Compensation Amount or UserID is NOT empty!");
@@ -54,6 +53,11 @@ public class ApplicationController {
         jsonResult.setStateValue("false");
         jsonResult.setReturnInfo("Apply  compensation failed, Please retry!");
         return jsonResult;
+    }
+    @ResponseBody
+    @GetMapping("application/{userID}")
+    public Application getInfo(@PathVariable String userID){
+        return applicationService.getInfoByUserID(userID);
     }
 }
 

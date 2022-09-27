@@ -15,4 +15,11 @@
         complaintID, complaintInfo, complaintAmount, userID
     </sql>
 
+    <insert id="insert" parameterType="com.csci927.pandemicaapply.bean.Complaint">
+        insert into pandemicaapply.Complaint(complaintInfo, complaintAmount, userID) values (#{complaintInfo},#{complaintAmount},#{userID});
+    </insert>
+
+    <select id="selectByUserID" parameterType="java.lang.String" resultType="com.csci927.pandemicaapply.bean.Complaint">
+        select <include refid="Base_Column_List"/> from pandemicaapply.Complaint where userID = #{userID};
+    </select>
 </mapper>

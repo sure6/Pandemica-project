@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -22,6 +23,7 @@ public class Complaint implements Serializable {
     private static final long serialVersionUID = -2321794470754667710L;;
 
       @TableId(value = "complaintID", type = IdType.AUTO)
+      @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Integer complaintID;
 
     @TableField("complaintInfo")

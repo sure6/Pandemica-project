@@ -9,6 +9,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
 /**
  * <p>
  *  ApplicationService Implement class
@@ -34,6 +36,18 @@ public class ApplicationServiceImpl extends ServiceImpl<ApplicationMapper, Appli
             return false;
         }
         return applicationMapper.selectByUserID(userID).size()>0;
+    }
+
+    @Override
+    public Application getInfoByUserID(String userID){
+        if(StringUtils.isEmpty(userID)){
+            return null;
+        }
+        List<Application> applicationList = applicationMapper.selectByUserID(userID);
+        if (applicationList.size()>0){
+            return applicationMapper.selectByUserID(userID).get(0);
+        }
+        return null;
     }
 
 }
