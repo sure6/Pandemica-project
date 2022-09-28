@@ -3,8 +3,8 @@ package com.csci927.pandemicabootdemo.service.impl;
 import com.csci927.pandemicabootdemo.bean.JSONResult;
 import com.csci927.pandemicabootdemo.bean.UserAccount;
 import com.csci927.pandemicabootdemo.mapper.UserAccountMapper;
-import com.csci927.pandemicabootdemo.service.UserAccountService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.csci927.pandemicabootdemo.service.UserAccountService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,8 +16,6 @@ import javax.servlet.http.HttpSession;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -64,7 +62,19 @@ public class UserAccountServiceImpl extends ServiceImpl<UserAccountMapper, UserA
     }
 
     @Override
-    public JSONResult doLoginWithSession(String username, String password,Integer cookieTime, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
+    public String getUserID(String username) {
+        if(StringUtils.isEmpty(username)){
+            return null;
+        }
+        List<String> strings = userAccountMapper.selectByUsername(username);
+        if(strings.size()>0 && !StringUtils.isEmpty(strings.get(0))){
+            return strings.get(0);
+        }
+        return null;
+    }
+
+    @Override
+    public JSONResult doLoginWithSession(String username, String password, Integer cookieTime, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
         JSONResult jsonResult = new JSONResult();
         jsonResult.setStateValue("false");
         UserAccount userAccount = userAccountMapper.selectUserInfoByAccount(username);

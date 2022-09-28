@@ -29,4 +29,8 @@
     <update id="updatePassword" parameterType="java.lang.String">
         update UserAccount set password= #{password} where username=#{username};
     </update>
+
+    <select id="selectByUsername" parameterType="java.lang.String" resultType="java.lang.String">
+        select userID from csci927service.UserAccount where username = #{username}
+    </select>
  </mapper>

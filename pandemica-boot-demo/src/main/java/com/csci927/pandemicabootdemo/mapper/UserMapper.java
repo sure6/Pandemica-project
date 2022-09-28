@@ -1,7 +1,7 @@
 package com.csci927.pandemicabootdemo.mapper;
 
-import com.csci927.pandemicabootdemo.bean.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.csci927.pandemicabootdemo.bean.User;
 
 import java.util.List;
 
@@ -21,4 +21,6 @@ public interface UserMapper extends BaseMapper<User> {
     List<User> selectPhone(String phoneNumber);
 
     List<User> selectEmail(String email);
+
+    User selectUser(String userID);
 }

@@ -1,10 +1,11 @@
 package com.csci927.pandemicabootdemo.config;
 
+
 import com.csci927.pandemicabootdemo.bean.UserAccount;
 import com.csci927.pandemicabootdemo.service.UserAccountService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.Cookie;
@@ -13,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 
-@Configuration
+@Component
 public class LoginInterceptor implements HandlerInterceptor {
 
 
@@ -29,7 +30,6 @@ public class LoginInterceptor implements HandlerInterceptor {
             response.sendRedirect(request.getContextPath() + "/userAccount/login");
             return false;
         }
-        System.out.println(cookies.length);
         // Define COOKIE_USERNAME, some login information of the user, such as username, password, etc
         String cookie_username = null;
         // Get some user information in the cookie
@@ -40,7 +40,6 @@ public class LoginInterceptor implements HandlerInterceptor {
                 break;
             }
         }
-        System.out.println(cookies[0].getName());
         // If the cookie does not contain some login information for the user, the user is redirected to the login screen
         if (StringUtils.isEmpty(cookie_username)) {
             response.sendRedirect(request.getContextPath() + "/userAccount/login");

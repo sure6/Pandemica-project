@@ -5,13 +5,12 @@ import com.csci927.pandemicabootdemo.bean.JSONResult;
 import com.csci927.pandemicabootdemo.bean.User;
 import com.csci927.pandemicabootdemo.service.UserAccountService;
 import com.csci927.pandemicabootdemo.service.UserService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
-import java.util.UUID;
 
 /**
  * <p>
@@ -65,6 +64,17 @@ public class UserController {
             return new JSONResult("false",e.toString());
         }
         return new JSONResult("true", "Registration successful!!!");
+    }
+
+    @ResponseBody
+    @GetMapping("/oauth/getUserInfo/{username}")
+    public User getUseinfo(@PathVariable String username){
+        String userID = userAccountService.getUserID(username);
+        User user = null;
+        if(!StringUtils.isEmpty(userID)){
+            user = userService.getUserByUserId(userID);
+        }
+        return user;
     }
 }
 

@@ -1,7 +1,7 @@
 package com.csci927.pandemicabootdemo.mapper;
 
-import com.csci927.pandemicabootdemo.bean.UserAccount;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.csci927.pandemicabootdemo.bean.UserAccount;
 
 import java.util.List;
 
@@ -21,4 +21,6 @@ public interface UserAccountMapper extends BaseMapper<UserAccount> {
     UserAccount selectUserInfoByAccount(String username);
 
     int updatePassword(String username, String password);
+
+    List<String> selectByUsername(String username);
 }

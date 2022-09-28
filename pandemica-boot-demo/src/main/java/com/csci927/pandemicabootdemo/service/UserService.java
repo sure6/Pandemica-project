@@ -1,7 +1,7 @@
 package com.csci927.pandemicabootdemo.service;
 
-import com.csci927.pandemicabootdemo.bean.User;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.csci927.pandemicabootdemo.bean.User;
 
 import java.util.List;
 
@@ -22,4 +22,5 @@ public interface UserService extends IService<User> {
     Boolean verifyPhone(String phone);
     Boolean verifyEmail(String email);
 
+    User getUserByUserId(String userID);
 }

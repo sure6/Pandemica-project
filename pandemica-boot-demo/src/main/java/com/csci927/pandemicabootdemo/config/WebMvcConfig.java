@@ -16,13 +16,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         InterceptorRegistration ir = registry.addInterceptor(loginInterceptor);
         // Intercept path
-        ir.addPathPatterns("/oauth/*");
-        // Do not intercept paths
-        List<String> irs = new ArrayList<String>();
-        irs.add("/userAccount/*");
-        irs.add("/index");
-
-        ir.excludePathPatterns(irs);
+        ir.addPathPatterns("/oauth/**");
     }
 
     //All CSS, JS,images, etc. go to the static path and everything else goes to templates

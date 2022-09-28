@@ -20,8 +20,6 @@ import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -104,7 +102,7 @@ class PandemicaBootDemoApplicationTests {
         //Global Configuration
         GlobalConfig globalConfig = new GlobalConfig();
         globalConfig.setAuthor("sure")
-                .setOutputDir("E:\\idea-workspaces\\Pandemica-project\\pandemica-boot-demo\\src\\main\\java")
+                .setOutputDir("C:\\Users\\12544\\Desktop\\aaaa")
                 .setFileOverride(true)//Setting file overwrite
                 .setIdType(IdType.AUTO)//Set the primary key generation policy
                 .setServiceName("%sService")//set name for service interface
@@ -117,8 +115,8 @@ class PandemicaBootDemoApplicationTests {
         DataSourceConfig dataSourceConfig = new DataSourceConfig();
         dataSourceConfig.setDriverName("com.mysql.cj.jdbc.Driver")
                 .setUrl("jdbc:mysql://aws-ap-southeast-2.connect.psdb.cloud/csci927service?sslMode=VERIFY_IDENTITY")
-                .setUsername("rkl8nbvvcjtdnuo6jgkg")
-                .setPassword("pscale_pw_iZcxm1daSbfDZLDjmlwTywA5orxqK6FyAu9tcLnP4DA");
+                .setUsername("xw0dlu8x9sv3aevbtxo1")
+                .setPassword("pscale_pw_ycdGdKFIz3QKQcqhE3Mg1mcSkWP2YjeBdX9rFRx3xvW");
 
         //policy mechanisms
         StrategyConfig strategyConfig = new StrategyConfig();
