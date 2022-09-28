@@ -36,11 +36,11 @@ public class LoginInterceptor implements HandlerInterceptor {
         // Get some user information in the cookie
         for (Cookie item : cookies) {
             if ("cookie_username".equals(item.getName())) {
-                System.out.println(item.getName());
                 cookie_username = item.getValue();
                 break;
             }
         }
+
         // If the cookie does not contain some login information for the user, the user is redirected to the login screen
         if (StringUtils.isEmpty(cookie_username)) {
             response.sendRedirect(request.getContextPath() + "/userAccount/login");

@@ -108,6 +108,12 @@
             <artifactId>pandemica-apply</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.csci927</groupId>
+            <artifactId>pandemica-mentalhealth</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
 

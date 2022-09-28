@@ -24,5 +24,6 @@
     <module>pandemica-registration</module>
     <module>pandemica-reverse-engneering</module>
     <module>pandemica-apply</module>
+    <module>pandemica-mentalhealth</module>
   </modules>
 </project>
