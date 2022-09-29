@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<h1>Vaccine Bookings</h1>
+		</div>
+		<table class="table table-striped table-bordered">
+			<thead class="table-dark">
+				<tr>
+					<th>Vaccine Name</th>
+					<th>Date</th>
+					<th>Time</th>
+					<th>Location</th>
+					<th>Status</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+			<tr th:each = "vaccine :${vaccineDetails}">
+			<td th:text = "${vaccine.vaccineName}"></td>
+			<td th:text = "${vaccine.date}"></td>
+			<td th:text = "${vaccine.time}"></td>
+			<td th:text = "${vaccine.location}"></td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
