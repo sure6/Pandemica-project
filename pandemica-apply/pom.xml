@@ -95,10 +95,38 @@
     </dependencies>
 
     <build>
+        <finalName>apply</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <!--fork:Without this configuration, the entire DevTools will not work -->
+                    <fork>true</fork>
+                    <addResources>true</addResources>
+                    <classifier>exec</classifier>
+                </configuration>
+            </plugin>
+            <!-- docker plugin begin -->
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>dockerfile-maven-plugin</artifactId>
+                <version>1.4.10</version>
+                <configuration>
+                    <repository>pandemica-cloud/${project.artifactId}</repository>
+                    <buildArgs>
+                        <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
+                    </buildArgs>
+                </configuration>
+            </plugin>
+            <!-- docker plugin end -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.2</version>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
             </plugin>
         </plugins>
     </build>
