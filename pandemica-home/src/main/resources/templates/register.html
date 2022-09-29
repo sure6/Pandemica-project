@@ -224,7 +224,6 @@
         var confirmedRegister = confirm("Confirm that the input information is correct?");
         if (confirmedRegister) {
             var formdata = furtherAccessory(getFormData($('#registrationForm')));
-            console.log(JSON.stringify(formdata));
             $.ajax({
                 type: "POST",
                 dataType: "text",

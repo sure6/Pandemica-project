@@ -197,7 +197,6 @@
         if (username !== "") {
             $.get("/oauth/getUserInfo/" + username, function (result) {
                 if (null != result && "" !== result) {
-                    console.log(result);
                     $("#name").val(result.lastName + result.firstName);
                     $("#email").val(result.email);
                     $("#phone").val(result.phoneNumber);
@@ -225,7 +224,6 @@
             applicationData.applicationInfo=$("#applicationInfo").val();
             applicationData.compensationAmount=$("#compensationAmount").val();
             applicationData.userID=$("#userID").val();
-            console.log(applicationData)
             $.ajax({
                 type:"post",
                 dataType:"text",

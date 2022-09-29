@@ -142,7 +142,6 @@
                 if (username !== "") {
                     $.get("/oauth/getUserInfo/" + username, function (result) {
                         if (null != result && "" !== result) {
-                            console.log(result);
                             $("#name").val(result.lastName + result.firstName);
                             $("#email").val(result.email);
                             $("#phone").val(result.phoneNumber);
@@ -152,7 +151,6 @@
                             $("#userID").val(result.userID);
 
                             $.get("/oauth/application/"+$("#userID").val(),function (result) {
-                                console.log(result.compensationAmount);
                                 if(undefined == result.compensationAmount ||undefined==result.applicationInfo){
                                     alert("You haven't even applied. please apply firstly");
                                     window.location.href="/oauth/application/apply"
@@ -190,7 +188,6 @@
                     complaintData.complaintInfo = $("#complaintInfo").val();
                     complaintData.complaintAmount = $("#complaintAmount").val();
                     complaintData.userID = $("#userID").val();
-                    console.log(complaintData)
                     $.ajax({
                         type: "post",
                         dataType: "text",
