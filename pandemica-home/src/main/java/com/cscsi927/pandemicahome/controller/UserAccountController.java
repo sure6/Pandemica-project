@@ -107,6 +107,7 @@ public class UserAccountController {
      * logout
      */
 
+    @ResponseBody
     @GetMapping("logout")
     public String logout(HttpSession session, HttpServletResponse response) {
         //  Delete the user information in the session
