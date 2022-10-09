@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>Creative - Start Bootstrap Theme</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico"/>
+    <!-- Bootstrap Icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet"/>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic"
+          rel="stylesheet" type="text/css"/>
+    <!-- SimpleLightbox plugin CSS-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet"/>
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="/css/apply-styles.css" rel="stylesheet"/>
+    <style>
+        th, td{
+            color: red;
+        }
+    </style>
+</head>
+<body id="page-top">
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+    <div class="container px-4 px-lg-5">
+        <a class="navbar-brand" href="#page-top">Pandemica Vaccine Comfirmation Information</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto my-2 my-lg-0">
+                <li class="nav-item"><a class="nav-link" href="/index">Home</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- Masthead-->
+<header class="masthead">
+    <div class="container px-4 px-lg-5 h-100">
+        <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
+
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
+                    <div class="col-lg-6">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th id="userID"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>Full name</td>
+                                <td id="name"></td>
+                            </tr>
+                            <tr>
+                                <td>Email</td>
+                                <td id="email"></td>
+                            </tr>
+                            <tr>
+                                <td>Phone number</td>
+                                <td id="phone"></td>
+                            </tr>
+                            <tr>
+                                <td>Position</td>
+                                <td id="position"></td>
+                            </tr>
+                            <tr>
+                                <td>Age</td>
+                                <td id="age"></td>
+                            </tr>
+                            <tr>
+                                <td>Gender</td>
+                                <td id="gender"></td>
+                            </tr>
+                            <tr>
+                                <td>Vaccination Type</td>
+                                <td id="vaccineType"></td>
+                            </tr>
+                            <tr>
+                                <td>Vaccination Number</td>
+                                <td id="vaccineNum"></td>
+                            </tr>
+                            <tr>
+                                <td>Comments</td>
+                                <td id="comments"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><button class="btn btn-outline-info" onclick="print()">Print</button></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</header>
+
+<!-- Footer-->
+<footer class="bg-light py-5">
+    <div class="container px-4 px-lg-5">
+        <div class="small text-center text-muted">Copyright &copy; 2022 - group 17</div>
+    </div>
+</footer>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+        integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+    (function () {
+        var username = cookie("cookie_username");
+        if (username !== "") {
+            $.get("/oauth/getUserInfo/" + username, function (result) {
+                if (null != result && "" !== result) {
+                    $("#name").html(result.lastName + result.firstName);
+                    $("#email").html(result.email);
+                    $("#phone").html(result.phoneNumber);
+                    $("#position").html(result.position);
+                    $("#age").html(result.age);
+                    $("#gender").html(result.gender);
+                    $("#userID").html(result.userID);
+
+                    $.get("/oauth/vaccineBooking/"+$("#userID").html(),function (result) {
+                        if(undefined == result.vaccineType ||undefined==result.vaccineNum || undefined == result.comments){
+                            alert("You haven't even booked. please book vaccination firstly");
+                            window.location.href="/oauth/vaccineBooking"
+                        }
+                        $("#vaccineType").html(result.vaccineType);
+                        $("#vaccineNum").html(result.vaccineNum);
+                        $("#comments").html(result.comments);
+                    });
+                } else {
+                    alert("user does not exist !!! return the index");
+                    window.location.href="/userAccount/login";
+                }
+
+            })
+        }else {
+            alert("You are not logged in. go log in again!!!");
+            window.location.href="/index";
+        }
+
+    })()
+
+
+    // get cookie and get specific cookie
+    function cookie(name) {
+        var cookieArray = document.cookie.split("; ");
+        var cookie = new Object();
+        for (var i = 0; i < cookieArray.length; i++) {
+            var arr = cookieArray[i].split("=");
+            if (arr[0] == name) return unescape(arr[1]);
+        }
+        return "";
+    }
+</script>
+</body>
+</html>

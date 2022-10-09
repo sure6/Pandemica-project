@@ -24,5 +24,6 @@
     <module>pandemica-registration</module>
     <module>pandemica-apply</module>
     <module>pandemica-mentalhealth</module>
+    <module>pandemica-vaccinebooking</module>
   </modules>
 </project>

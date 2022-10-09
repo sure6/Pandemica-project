@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>Creative - Start Bootstrap Theme</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico"/>
+    <!-- Bootstrap Icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet"/>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic"
+          rel="stylesheet" type="text/css"/>
+    <!-- SimpleLightbox plugin CSS-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet"/>
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="/css/apply-styles.css" rel="stylesheet"/>
+</head>
+<body id="page-top">
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+    <div class="container px-4 px-lg-5">
+        <a class="navbar-brand" href="#page-top">Pandemica Vaccine Booking</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto my-2 my-lg-0">
+                <li class="nav-item"><a class="nav-link" href="/index">Home</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- Masthead-->
+<header class="masthead">
+    <div class="container px-4 px-lg-5 h-100">
+        <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
+
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-lg-8 col-xl-6 text-center">
+                        <h2 class="text-primary mt-0">Let's book vaccination</h2>
+                        <hr class="divider"/>
+                        <p class="text-primary mb-5">Please book the vaccine for your safety</p>
+                    </div>
+                </div>
+                <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
+                    <div class="col-lg-6">
+                        <form id="contactForm" data-sb-form-api-token="API_TOKEN" onsubmit="return func()">
+                            <input type="hidden" id="userID" value="" >
+                            <!-- Name input-->
+                            <div class="form-floating mb-3">
+                                <input class="form-control" id="name" type="text" readonly/>
+                                <label for="name">Full name</label>
+                            </div>
+                            <!-- Email address input-->
+                            <div class="form-floating mb-3">
+                                <input class="form-control" id="email" type="email"
+                                        readonly/>
+                                <label for="email">Email address</label>
+                            </div>
+                            <!-- Phone number input-->
+                            <div class="form-floating mb-3">
+                                <input class="form-control" id="phone" type="tel" readonly/>
+                                <label for="phone">Phone number</label>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="form-floating mb-3">
+                                        <input class="form-control" id="position" type="text" readonly />
+                                        <label for="position">Position</label>
+                                    </div>
+
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-floating mb-3">
+                                        <input class="form-control" id="age" type="text" readonly  />
+                                        <label for="age">Age</label>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-floating mb-3">
+                                        <input class="form-control" id="gender" type="text" readonly />
+                                        <label for="gender">Gender</label>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <select class="form-select form-select-lg" aria-label=".form-select-lg example"
+                                        data-sb-validations="required" id="vaccineType" >
+                                    <option selected>Please choose vaccination type you want to vaccine</option>
+                                    <option value="1">BioNTech, Pfizer vaccine</option>
+                                    <option value="2">Spikevax (Moderna)</option>
+                                    <option value="3">Vaxzevria (AstraZeneca)</option>
+                                </select>
+                                <div class="invalid-feedback" data-sb-feedback="compensationAmount:required">
+                                    A compensation amount required.
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" id="vaccineNum" type="text" readonly value="" />
+                                    <label for="vaccineNum">Vaccination Number</label>
+                                </div>
+                            </div>
+                            <!-- comment input-->
+                            <div class="form-floating mb-3">
+
+                                <textarea class="form-control" id="comments" type="text"
+                                          placeholder="Enter your Comments here..." style="height: 10rem"
+                                          data-sb-validations="required"></textarea>
+                                <label for="comments">comments</label>
+                                <div class="invalid-feedback" data-sb-feedback="applicationInfo:required">A message is
+                                    required.
+                                </div>
+                            </div>
+                            <!-- Submit success message-->
+                            <!---->
+                            <!-- This is what your users will see when the form-->
+                            <!-- has successfully submitted-->
+                            <div class="d-none" id="submitSuccessMessage">
+                                <div class="text-center mb-3">
+                                    <div class="fw-bolder">Form submission successful!</div>
+                                    To activate this form, sign up at
+                                    <br/>
+                                    <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                                </div>
+                            </div>
+                            <!-- Submit error message-->
+                            <!---->
+                            <!-- This is what your users will see when there is-->
+                            <!-- an error submitting the form-->
+                            <div class="d-none" id="submitErrorMessage">
+                                <div class="text-center text-danger mb-3">Error sending message!</div>
+                            </div>
+                            <!-- Submit Button-->
+                            <div class="d-grid">
+                                <button class="btn btn-primary btn-xl" id="submitBtn" type="submit" onclick="saveApplicationInfo()">Submit
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</header>
+
+<!-- Footer-->
+<footer class="bg-light py-5">
+    <div class="container px-4 px-lg-5">
+        <div class="small text-center text-muted">Copyright &copy; 2022 - group 17</div>
+    </div>
+</footer>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+        integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+    (function () {
+        var username = cookie("cookie_username");
+        if (username !== "") {
+            $('#vaccineType').change(function(){
+                var vaccineType =  $(this).val();
+                switch (vaccineType){
+                    case "1": $('#vaccineNum').val("2");break;
+                    case "2": $('#vaccineNum').val("3");break;
+                    case "3": $('#vaccineNum').val("4");break;
+                    default :
+                        alert("please choose your vaccination type")
+                        break;
+                }
+            })
+
+            $.get("/oauth/getUserInfo/" + username, function (result) {
+                if (null != result && "" !== result) {
+                    $("#name").val(result.lastName + result.firstName);
+                    $("#email").val(result.email);
+                    $("#phone").val(result.phoneNumber);
+                    $("#position").val(result.position);
+                    $("#age").val(result.age);
+                    $("#gender").val(result.gender);
+                    $("#userID").val(result.userID);
+
+
+                } else {
+                    alert("user does not exist !!! return the index");
+                    window.location.href="/userAccount/login";
+                }
+
+            })
+        }else {
+            alert("You are not logged in. go log in again!!!");
+            window.location.href="/index";
+        }
+
+    })()
+
+    function saveApplicationInfo(){
+        var confirmed=confirm("Are you sure to submit your booking info?")
+        if (confirmed){
+            var bookingData={};
+            bookingData.vaccineType=$("#vaccineType").val();
+            bookingData.vaccineNum=$("#vaccineNum").val();
+            bookingData.comments=$("#comments").val();
+            bookingData.userID=$("#userID").val();
+            $.ajax({
+                type:"post",
+                dataType:"text",
+                contentType:"application/json; charset=utf-8",
+                url:"/oauth/saveVaccineBooking",
+                data: JSON.stringify(bookingData),
+                success:function (result){
+                    var resultObj = JSON.parse(result);
+                    alert(resultObj.returnInfo);
+                    if(resultObj.stateValue === "true"){
+                        setTimeout(()=>{
+                            window.location.href="/index";
+                        },1000)
+
+                    }
+                },
+                error:function (){
+                    alert("request failed!!")
+                }
+            });
+        }
+
+
+    }
+
+
+    function func(){
+        return false;
+    }
+    // get cookie and get specific cookie
+    function cookie(name) {
+        var cookieArray = document.cookie.split("; ");
+        var cookie = new Object();
+        for (var i = 0; i < cookieArray.length; i++) {
+            var arr = cookieArray[i].split("=");
+            if (arr[0] == name) return unescape(arr[1]);
+        }
+        return "";
+    }
+</script>
+</body>
+</html>
