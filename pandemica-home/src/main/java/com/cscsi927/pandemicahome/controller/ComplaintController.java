@@ -23,9 +23,9 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/oauth")
 public class ComplaintController {
 
-    @DubboReference(interfaceClass = ComplaintService.class, version = "1.0.0", check = true)
+    @DubboReference(interfaceClass = ComplaintService.class, version = "1.0.0", check = false, mock = "fail:return Error in service ")
     private ComplaintService complaintService;
-    @DubboReference(interfaceClass = ApplicationService.class, version = "1.0.0", check = true)
+    @DubboReference(interfaceClass = ApplicationService.class, version = "1.0.0", check = false,  mock = "fail:return Error in service ")
     private ApplicationService applicationService;
 
 
@@ -61,7 +61,7 @@ public class ComplaintController {
             return jsonResult;
         }
         jsonResult.setStateValue("false");
-        jsonResult.setReturnInfo("Apply for complaint failed, Please retry!");
+        jsonResult.setReturnInfo("Apply for complaint failed, Maybe Error in this Service!");
         return jsonResult;
     }
 }

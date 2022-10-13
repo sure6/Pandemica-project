@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/oauth/")
 public class ApplicationController {
 
-    @DubboReference(interfaceClass = ApplicationService.class, version = "1.0.0", check = true)
+    @DubboReference(interfaceClass = ApplicationService.class, version = "1.0.0", check = false, mock = "fail:return Error in service ")
     private ApplicationService applicationService;
 
     @GetMapping("application/apply")
@@ -51,7 +51,7 @@ public class ApplicationController {
             return jsonResult;
         }
         jsonResult.setStateValue("false");
-        jsonResult.setReturnInfo("Apply  compensation failed, Please retry!");
+        jsonResult.setReturnInfo("Apply  compensation failed, Maybe Error in this Service!");
         return jsonResult;
     }
     @ResponseBody
@@ -59,5 +59,6 @@ public class ApplicationController {
     public Application getInfo(@PathVariable String userID){
         return applicationService.getInfoByUserID(userID);
     }
+
 }
 
