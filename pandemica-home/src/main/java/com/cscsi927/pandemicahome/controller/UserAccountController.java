@@ -13,6 +13,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.logging.Logger;
 
 /**
  * <p>
@@ -49,7 +50,6 @@ public class UserAccountController {
         if(!password.equals(passwordConfirm)){
             return new JSONResult("false","The two entered passwords are different！！！");
         }
-//        System.out.println(username+password);
         if(!userAccountService.modifyPassword(username,password)){
             return new JSONResult("false","Password modified failed, please retry");
         }
@@ -65,7 +65,7 @@ public class UserAccountController {
         JSONResult jsonResult = userAccountService.doLogin(username, password);
         UserAccount account = userAccountService.getUserInfoByAccount(username);
         if (StringUtils.isEmpty(remember) ){
-            System.out.println("not rememer");
+            System.out.println("not remember and the default cookie time is 30min");
             // The default cookie time is 30min
             if(jsonResult.getStateValue().equals("true")){
                 this.setCookieAndSession(account,30 * 60,session,response);
@@ -74,6 +74,7 @@ public class UserAccountController {
 
         }
         if(jsonResult.getStateValue().equals("true")){
+            System.out.println("not remember and the cookie time set 3 days");
             this.setCookieAndSession(account,3 * 24 * 60 * 60,session,response);
             return jsonResult;
         }
