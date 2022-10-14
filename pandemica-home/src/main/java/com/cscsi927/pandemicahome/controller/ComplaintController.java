@@ -23,9 +23,9 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/oauth")
 public class ComplaintController {
 
-    @DubboReference(interfaceClass = ComplaintService.class, version = "1.0.0", check = false, mock = "fail:return Error in service ")
+    @DubboReference(interfaceClass = ComplaintService.class, version = "1.0.0", check = false, mock = "fail:return Error in service ", timeout = 60000)
     private ComplaintService complaintService;
-    @DubboReference(interfaceClass = ApplicationService.class, version = "1.0.0", check = false,  mock = "fail:return Error in service ")
+    @DubboReference(interfaceClass = ApplicationService.class, version = "1.0.0", check = false,  mock = "fail:return Error in service ", timeout = 60000)
     private ApplicationService applicationService;
 
 
