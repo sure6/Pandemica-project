@@ -9,3 +9,6 @@ Install note:
 - maven 3.6.3 
 - zookeeper 3.6.3 
 - jdk 1.8
+
+
+in local mechine, before start docker, you should use window powershell(administration) to input #netsh winsock reset# to use docker
